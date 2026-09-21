@@ -26,3 +26,16 @@ export interface UploadedFile {
     path: string;
     buffer: Buffer;
 }
+
+export interface MonthData {
+	label: string;
+	startDate: string;
+	endDate: string;
+}
+
+export interface MonthlyData {
+	label: string;
+	avg: string;
+	google: any[];
+	'google-mobile': any[];
+}

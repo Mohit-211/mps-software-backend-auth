@@ -67,6 +67,10 @@ export const paymentTypes = {
 	ONE_TIME: 'ONE_TIME',
 	MEMBERSHIP: 'MEMBERSHIP',
 };
+export const paymentTypesArr = [
+	'ONE_TIME',
+	'MEMBERSHIP',
+];
 
 export const rolesTypes = {
 	SUP_ADM: 'Super Admin',
@@ -174,6 +178,8 @@ export const subscriptionStatusTypes = {
 };
 
 export const membershipType = {
+	DAILY: 'DAILY',
+	WEEKLY: 'WEEKLY',
 	MONTHLY: 'MONTHLY',
 	QUARTERLY: 'QUARTERLY',
 	HALF_YEARLY: 'HALF_YEARLY',
@@ -418,6 +424,8 @@ export const subscriptionStatusTypesArr: string[] = [
 ];
 
 export const membershipTypeArr: string[] = [
+	'DAILY',
+	'WEEKLY',
 	'MONTHLY',
 	'QUARTERLY',
 	'HALF_YEARLY',
@@ -492,3 +500,248 @@ export const ticketStatusTypes = {
 };
 
 export const ticketStatusTypesArr = ['open', 'in_progress', 'resolved', 'closed']
+
+export const colors = {
+	DEFAULT: 'default',
+	MINIMAL: 'minimal',
+	RED: 'red',
+	BLUE: 'blue',
+};
+export const colorsArr = [
+	'default', 'minimal', 'red', 'blue',
+];
+export const reportsArr = [
+	'rank_tracker',
+	'local_search_grid',
+	'citation_tracker',
+	'citation_builder',
+	'reputation_manager',
+	'gbp_audit',
+	'local_search_audit',
+	'google_analytics'
+];
+export const reports = {
+	rank_tracker: 'rank_tracker',
+	local_search_grid: 'local_search_grid',
+	citation_tracker: 'citation_tracker',
+	citation_builder: 'citation_builder',
+	reputation_manager: 'reputation_manager',
+	gbp_audit: 'gbp_audit',
+	local_search_audit: 'local_search_audit',
+	google_analytics: 'google_analytics'
+};
+export const citationDirectoriesArr = [
+	"google.com",
+	"maps.apple.com",       // Apple Maps
+	"facebook.com",
+	"bing.com",
+	"foursquare.com",
+	"bbb.org",              // Better Business Bureau
+	"mapquest.com",
+	"manta.com",
+	"zoominfo.com",
+	"yelp.com",
+	"justlanded.com",
+	"yellowpages.ca",       // or .com based on region
+	"storeboard.com",
+	"brownbook.net",
+	"infobel.com",
+	"bizapedia.com",
+	"cybo.com",
+	"411.ca",
+	"enrollbusiness.com",
+	"canpages.ca",
+	"pagesjaunes.ca",
+	"n49.com",
+	"2findlocal.com",
+	"hotfrog.ca",           // Hotfrog region-based
+	"profilecanada.com",
+	"tupalo.com",
+	"ourbis.ca",
+	"yellow.place",
+	"cylex.ca",
+	"phonepages.ca",
+	"acomp.io"
+];
+
+export const gbpPostTopicType = {
+	STANDARD: 'STANDARD',
+	EVENT: 'EVENT',
+	OFFER: 'OFFER',
+};
+export const gbpPostTopicTypeArr = [
+	'STANDARD',
+	'EVENT',
+	'OFFER'
+];
+
+export const gbpCallToAction = {
+	CALL_NOW: 'CALL_NOW',
+	SIGN_UP: 'SIGN_UP',
+	BUY: 'BUY',
+	LEARN_MORE: 'LEARN_MORE',
+	ORDER_ONLINE: 'ORDER_ONLINE',
+	BOOK: 'BOOK',
+	NONE: 'NONE',
+};
+export const gbpCallToActionArr = [
+	'CALL_NOW',
+	'SIGN_UP',
+	'BUY',
+	'LEARN_MORE',
+	'ORDER_ONLINE',
+	'BOOK',
+	'NONE'
+];
+
+
+export const postPublishStatusArr: string[] = [
+	'EXPIRED',
+	'SCHEDULED',
+	'REJECTED',
+	'LIVE',
+];
+
+export const postPublishStatus = {
+	expired: 'EXPIRED',
+	scheduled: 'SCHEDULED',
+	rejected: 'REJECTED',
+	live: 'LIVE',
+}
+
+export const citationOrderStatus = {
+	saved: 'SAVED',
+	payment_pending: 'PAYMENT_PENDING',
+	payment_failed: 'PAYMENT_FAILED',
+	confirmed: 'CONFIRMED',
+}
+export const citationOrderStatusArr: string[] = [
+	'SAVED',
+	'PAYMENT_PENDING',
+	'PAYMENT_FAILED',
+	'CONFIRMED',
+];
+
+export const citationCampaignStatus = {
+	saved: 'SAVED',
+	processing: 'PROCESSING',
+	submitted: 'SUBMITTED',
+	live: 'LIVE',
+	rejected: 'REJECTED',
+	need_review: 'NEEDS_REVIEW'
+}
+export const citationCampaignStatusArr: string[] = [
+	'SAVED',
+	'PROCESSING',
+	'SUBMITTED',
+	'LIVE',
+	'REJECTED',
+	'NEEDS_REVIEW',
+];
+
+
+export const paymentGateways = {
+	stripe: 'STRIPE',
+	paypal: 'PAYPAL',
+	razorpay: 'RAZORPAY',
+	worldpay: 'WORLDPAY',
+	cashfree: 'CASHFREE',
+	square: 'SQUARE',
+}
+export const paymentGatewaysArr: string[] = [
+	'STRIPE',
+	'PAYPAL',
+	'RAZORPAY',
+	'WORLDPAY',
+	'CASHFREE',
+	'SQUARE'
+];
+export const taxTypes = {
+	none: "NONE",
+	gst: "GST",
+	igst: "IGST",
+	cgst: "CGST",
+	sgst: "SGST",
+	vat: "VAT",
+	sales_tax: "SALES_TAX",
+	use_tax: "USE_TAX",
+	service_tax: "SERVICE_TAX"
+};
+
+export const taxTypesArr = [
+	"NONE",
+	"GST",
+	"IGST",
+	"CGST",
+	"SGST",
+	"VAT",
+	"SALES_TAX",
+	"USE_TAX",
+	"SERVICE_TAX"
+];
+export const paymentResources = {
+	creadit: 'CREDIT',
+	subscription: 'SUBSCRIPTION',
+	waller_recharge: 'WALLET_RECHARGE',
+	purchase: 'PURCHASE',
+	booking: 'BOOKING',
+	donation: 'DONATION',
+	settlement: 'SETTLEMENT',
+	fine: 'FINE'
+}
+
+export const paymentResourcesArr = ['CREDIT', 'SUBSCRIPTION', 'WALLET_RECHARGE', 'PURCHASE', 'BOOKING', 'DONATION', 'SETTLEMENT', 'FINE']
+
+
+export const citationVerificationTypes = {
+	postcard: 'POSTCARD',
+	phone: 'PHONE',
+	email: 'EMAIL',
+	video: 'VIDEO',
+	owner_Docs: 'OWNER_DOCS',
+	otp: 'OTP'
+}
+
+export const citationVerificationTypesArr = ["POSTCARD", "PHONE", "EMAIL", "VIDEO", "OWNER_DOCS", "OTP"]
+
+
+export const openingHoursTypesArr = ["Open", "Closed", "24hrs", "Split"]
+
+export const openingHoursTypes = {
+	open: 'Open',
+	closed: 'Closed',
+	'24hrs': '24hrs',
+	split: 'Split'
+}
+
+export const citationTypes = {
+	add: 'ADD',
+	update: 'UPDATE',
+	remove: 'REMOVE',
+}
+
+export const citationTypesArr = ["ADD", "UPDATE", "REMOVE", "VIDEO"]
+
+export const citationStatus = {
+	saved: 'SAVED',
+	processing: 'PROCESSING',
+	submitted: 'SUBMITTED',
+	live: 'LIVE',
+	rejected: 'REJECTED',
+	need_review: 'NEEDS_REVIEW'
+}
+export const citationStatusArr: string[] = [
+	'SAVED',
+	'PROCESSING',
+	'SUBMITTED',
+	'LIVE',
+	'REJECTED',
+	'NEEDS_REVIEW',
+];
+
+export const citationModes = {
+	manual: 'MANUAL',
+	aggregator: 'AGGREGATOR',
+}
+
+export const citationModesArr = ["MANUAL", "AGGREGATOR"]

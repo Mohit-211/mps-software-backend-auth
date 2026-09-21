@@ -13,6 +13,8 @@ import getQueryParams from './getQueryParams';
 import isValidMongoObjectId from './checkMongoObjectId';
 import mongoFunctions from './mongoFunctions';
 import handleImageCompression from './compressImage';
+import validateTime12HourFormat from './isValid12HrFormat';
+import compareObjectIds from './compareObjectIds';
 
 export {
 	allowedOrigins,
@@ -30,4 +32,6 @@ export {
 	isValidMongoObjectId,
 	mongoFunctions,
 	handleImageCompression,
+	validateTime12HourFormat,
+	compareObjectIds,
 };

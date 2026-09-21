@@ -3,7 +3,6 @@ import { allowedOrigins } from '../utils';
 
 const corsConfigs: CorsOptions = {
 	origin: (origin, callback) => {
-		console.log('Origin:', origin);
 		if (allowedOrigins.indexOf(origin || '') !== -1 || !origin) {
 			// remove ||!origin to block postman request
 			callback(null, true);

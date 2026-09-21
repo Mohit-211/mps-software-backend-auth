@@ -14,6 +14,8 @@ export interface QueryDefinition {
   offset?: number;
   code?: string;
   state?: any;
+  clientId?: string;
+  keywords?: string[];
   [key: string]: unknown; 
 }
 

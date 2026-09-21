@@ -10,6 +10,8 @@ import { ApiError } from "../utils";
 export interface ILocation extends Document {
   name: string;
   address: string;
+    lat?: number;
+  lng?: number;
   country: string;
   state: string;
   city: string;
@@ -43,6 +45,14 @@ const locationSchema = new Schema<ILocation>(
       type: String,
       trim: true,
       required: true,
+    },
+    lat: {
+      type: Number,
+      default: null,
+    },
+    lng: {
+      type: Number,
+      default: null,
     },
     country: {
       type: String,

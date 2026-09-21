@@ -1,8 +1,11 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/consistent-indexed-object-style */
 import multer, { FileFilterCallback } from 'multer';
 import path from 'path';
 import fs from 'fs';
-import { Request } from 'express';
+import { Request, Response, NextFunction } from 'express';
+import { ApiError } from '../utils';
+import httpStatus from 'http-status';
 
 const createDirectory = (dir: string) => {
 	if (!fs.existsSync(dir)) {
@@ -15,7 +18,7 @@ const PUBLIC_DIR = path.resolve(
 	process.env.NODE_ENV === 'development' ? '../../public' : '../../../public',
 );
 
-// Function to determine destination based on fieldname
+// Function to determine destination based on field name
 const getDestination = (fileField: string): string => {
 	switch (fileField) {
 		case 'videos':
@@ -29,7 +32,7 @@ const getDestination = (fileField: string): string => {
 		case 'audios':
 			return 'audios';
 		default:
-			throw new Error('Invalid fieldname');
+			throw new Error('Invalid field name');
 	}
 };
 
@@ -40,9 +43,7 @@ const storage = multer.diskStorage({
 			const fileField = file.fieldname as string;
 			const destFolder = getDestination(fileField);
 			const filePath = path.join(PUBLIC_DIR, 'uploads', destFolder);
-
 			createDirectory(filePath);
-
 			cb(null, filePath);
 		} catch (error) {
 			cb(error, '');
@@ -64,39 +65,24 @@ const checkFileType = (
 	cb: FileFilterCallback,
 ): void => {
 	const allowedFiletypes = [
-		'jpeg',
-		'jpg',
-		'png',
-		'gif',
-		'mp4',
-		'mov',
-		'pdf',
-		'mp3',
-		'doc',
-		'docx',
+		'jpeg', 'jpg', 'png', 'gif', 'mp4', 'mov', 'pdf', 'mp3', 'doc', 'docx',
 	];
-
-	const fileExtension = path
-		.extname(file.originalname)
-		.toLowerCase()
-		.substring(1);
+	const fileExtension = path.extname(file.originalname).toLowerCase().substring(1);
 	const isValidExtension = allowedFiletypes.includes(fileExtension);
-
 	const isValidMimeType =
 		file.mimetype.startsWith('image/') ||
 		file.mimetype.startsWith('video/') ||
 		file.mimetype.startsWith('application/pdf') ||
 		file.mimetype.startsWith('audio/') ||
 		file.mimetype === 'application/msword' ||
-		file.mimetype ===
-			'application/vnd.openxmlformats-officedocument.wordprocessingml.document';
+		file.mimetype === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document';
 
 	if (isValidExtension && isValidMimeType) {
 		cb(null, true);
 	} else {
 		cb(
 			new Error(
-				'Error: Images(.jpeg, .jpg, .png), videos(.mp4, .mov), Audio(.mp3), and File(.pdf, .doc, .docx) only allow!',
+				'Error: Images (.jpeg, .jpg, .png), videos (.mp4, .mov), Audio (.mp3), and File (.pdf, .doc, .docx) only allow!',
 			),
 		);
 	}
@@ -113,8 +99,7 @@ const getFileExtension = (file: Express.Multer.File): string => {
 		'application/pdf': 'pdf',
 		'audio/mpeg': 'mp3',
 		'application/msword': 'doc',
-		'application/vnd.openxmlformats-officedocument.wordprocessingml.document':
-			'docx',
+		'application/vnd.openxmlformats-officedocument.wordprocessingml.document': 'docx',
 	};
 	return mimeToExtMap[file.mimetype] || 'txt';
 };
@@ -137,4 +122,18 @@ const upload = multer({
 	{ name: 'audios', maxCount: 10 },
 ]);
 
-export default upload;
+const uploadMiddleware = (req: Request, res: Response, next: NextFunction) => {
+	upload(req, res, (err: any) => {
+		if (err instanceof multer.MulterError) {
+			if (err.code === 'LIMIT_UNEXPECTED_FILE') {
+				return next();
+			}
+			return next(new ApiError(httpStatus.BAD_REQUEST, err.message));
+		} else if (err) {
+			return next(new ApiError(httpStatus.INTERNAL_SERVER_ERROR, err.message));
+		}
+		next();
+	});
+};
+
+export default uploadMiddleware;

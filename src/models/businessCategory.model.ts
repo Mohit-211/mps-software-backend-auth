@@ -98,7 +98,7 @@ businessCategorySchema.statics.getById = async function (
 businessCategorySchema.statics.deleteById = async function (businessCategoryId: string): Promise<void> {
 	try {
 		const businessCategory = await this.findOneAndUpdate(
-			{ businessCategory_id: businessCategoryId, is_active: true },
+			{ _id: businessCategoryId, is_active: true },
 			{ is_active: false, deleted_at: new Date() },
 			{ new: true },
 		);

@@ -20,14 +20,36 @@ export * from "./faq.model";
 
 export * from "./client.model";
 export * from "./location.model";
+export * from "./whitelabelProfile.model";
 
-// razorpay 
+// razorpay
 export * from "./coupon.model";
 export * from "./payment.model";
 export * from "./subscriptionPlan.model";
 export * from "./userSubscription.model";
 export * from "./contactUs.model";
 
+// location service — GBP / rank tracking / reports
+export * from "./rankTrackerReport.model";
+export * from "./gbpAuditReport.model";
+export * from "./localSearchGridReport.model";
+export * from "./localMapRanking.model";
+export * from "./userGBP.model";
+export * from "./gbpPost.model";
+export * from "./campaign.model";
+
+
+// location service — citations
+export * from "./aggregator.model";
+export * from "./citationDirectories.model";
+export * from "./manualCitatonsCreditInfo.model";
+export * from "./citationDuplicateRemoveCredit.model";
+export * from "./locationCitations.model";
+export * from "./citation.model";
+
+// location service — credit-based payments (kept fully separate from subscription Payment above)
+export * from "./creditPayment.model";
+export * from "./paymentCreditPlans.model";
 
 // admin
 export * from "./admin.model";

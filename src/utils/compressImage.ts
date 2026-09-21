@@ -66,22 +66,12 @@ export const handleImageCompression = async (
 			// Iterate over imagesArr using for...of loop
 			for (const currImage of imagesArr) {
 				// Compress the current image
-				await compressImage(
-					currImage,
-					path.join(PUBLIC_DIR, 'uploads', 'images'),
-				);
+									await compressImage(
+						currImage,
+						path.join(PUBLIC_DIR, 'uploads', 'images'),
+					);
 
-				// Update filename and path to the compressed version
-				const compressedFileName = `compressed_${currImage.filename}`;
-				currImage.filename = compressedFileName;
-				currImage.path = path.join(
-					PUBLIC_DIR,
-					'uploads',
-					'images',
-					compressedFileName,
-				);
-
-				newArr.push(currImage);
+					newArr.push(currImage);
 			}
 
 			// Update req.files.images with compressed images
