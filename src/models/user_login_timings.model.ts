@@ -6,7 +6,7 @@ import {
 } from '../configs/mongoPlugins';
 
 export interface IUserLoginTiming extends Document {
-	_id: Schema.Types.ObjectId;
+	_id: mongoose.Types.ObjectId;
 	user_id: Schema.Types.ObjectId;
 	token_id?: Schema.Types.ObjectId;
 	time_zone: string;

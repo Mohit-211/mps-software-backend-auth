@@ -1,4 +1,4 @@
-import { Document, Schema, Model, model } from 'mongoose';
+import { Document, Schema, Model, model, Types } from 'mongoose';
 import { tokenTypes, tokenTypesArr } from '../configs/constantTypes';
 import {
 	addTimestamps,

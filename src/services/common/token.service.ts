@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import jwt, { JwtPayload } from 'jsonwebtoken';
-import moment, { Moment } from 'moment';
+import { DateTime } from 'luxon';
 import httpStatus from 'http-status';
 
 import config from '../../configs/config';
@@ -19,7 +19,7 @@ interface TokenPayload extends JwtPayload {
 
 export const generateToken = (
 	userId: any,
-	expires: Moment,
+	expires: DateTime,
 	type: string,
 	role_id: number,
 	user_type: string,
@@ -28,8 +28,8 @@ export const generateToken = (
 	try {
 		const payload: TokenPayload = {
 			sub: userId.toString(),
-			iat: moment().unix(),
-			exp: expires.unix(),
+			iat: DateTime.now().toUnixInteger(),
+			exp: expires.toUnixInteger(),
 			type,
 			role_id,
 			user_type,
@@ -157,10 +157,9 @@ export const generateAuthAccessTokens = async (user: IUser): Promise<any> => {
 			);
 		}
 
-		const accessTokenExpires = moment().add(
-			config.constants.jwt.accessExpirationDays,
-			'days',
-		);
+		const accessTokenExpires = DateTime.now().plus({
+			days: config.constants.jwt.accessExpirationDays,
+		});
 
 		const accessToken = generateToken(
 			user._id,
@@ -172,7 +171,7 @@ export const generateAuthAccessTokens = async (user: IUser): Promise<any> => {
 
 		return {
 			token: accessToken,
-			expires: accessTokenExpires.toDate(),
+			expires: accessTokenExpires.toJSDate(),
 		};
 	} catch (error: any) {
 		throw new ApiError(
@@ -193,10 +192,9 @@ export const generateAuthRefreshTokens = async (user: IUser): Promise<any> => {
 			);
 		}
 
-		const refreshTokenExpires = moment().add(
-			config.constants.jwt.refreshExpirationDays,
-			'days',
-		);
+		const refreshTokenExpires = DateTime.now().plus({
+			days: config.constants.jwt.refreshExpirationDays,
+		});
 
 		const refreshToken = generateToken(
 			user._id,
@@ -209,7 +207,7 @@ export const generateAuthRefreshTokens = async (user: IUser): Promise<any> => {
 		const refreshTokenDoc = await saveToken(
 			refreshToken,
 			user._id,
-			moment.utc(refreshTokenExpires).format('YYYY-MM-DD HH:mm:ss'),
+			refreshTokenExpires.toUTC().toFormat('yyyy-MM-dd HH:mm:ss'),
 			tokenTypes.REFRESH,
 			user?.fcm_token,
 		);
@@ -224,7 +222,7 @@ export const generateAuthRefreshTokens = async (user: IUser): Promise<any> => {
 		return {
 			id: refreshTokenDoc.id,
 			token: refreshToken,
-			expires: refreshTokenExpires.toDate(),
+			expires: refreshTokenExpires.toJSDate(),
 		};
 	} catch (error: any) {
 		throw new ApiError(
@@ -235,4 +233,3 @@ export const generateAuthRefreshTokens = async (user: IUser): Promise<any> => {
 		);
 	}
 };
-

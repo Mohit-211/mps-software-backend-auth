@@ -6,7 +6,7 @@ import prettierConfig from 'eslint-config-prettier';
 export default tseslint.config(
     {
         // config with just ignores is the replacement for `.eslintignore`
-        ignores: ['**/build/**', '**/dist/**', 'coverage', 'docker'],
+        ignores: ['**/build/**', '**/dist/**', 'coverage'],
     },
 
     // Turns off all rules that are unnecessary or might conflict with Prettier.

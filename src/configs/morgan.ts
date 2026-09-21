@@ -1,7 +1,7 @@
 import morgan from 'morgan';
 import config from './config';
 import logger from './logger';
-import moment from 'moment';
+import { DateTime } from 'luxon';
 import fs from 'fs';
 import path from 'path';
 import { Request, Response } from 'express';
@@ -20,7 +20,7 @@ const createLogDirectory = (logsDir: string) => {
 };
 
 const writeLog = (logsDir: string, logMessage: string) => {
-  const currentTime = moment().format('YYYY-MM-DD');
+  const currentTime = DateTime.now().toFormat('yyyy-MM-dd');
   const fileName = path.join(logsDir, `${currentTime}.log`);
   try {
     if (!fs.existsSync(fileName)) {
@@ -39,7 +39,7 @@ export const successHandler = morgan(successResponseFormat, {
   skip: (req: Request, res: Response) => res.statusCode >= 400,
   stream: {
     write: (message: string) => {
-      const currentTime = moment().format();
+      const currentTime = DateTime.now().toISO();
       const logMessage = `${currentTime}<=>${message.trim()}\n`;
       const logsDir = LOG_DIR;
       createLogDirectory(logsDir);
@@ -53,7 +53,7 @@ export const errorHandler = morgan(errorResponseFormat, {
   skip: (req: Request, res: Response) => res.statusCode < 400,
   stream: {
     write: (message: string) => {
-      const currentTime = moment().format();
+      const currentTime = DateTime.now().toISO();
       const logMessage = `${currentTime}<=> Error ${message.trim()}\n`;
       const logsDir = LOG_DIR;
       createLogDirectory(logsDir);

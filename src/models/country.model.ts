@@ -9,7 +9,7 @@ import {
 } from '../configs/mongoPlugins';
 
 export interface ICountry extends Document {
-	_id: Schema.Types.ObjectId;
+	_id: mongoose.Types.ObjectId;
 	name: string;
 	currency?: string;
 	unicodeFlag?: string;

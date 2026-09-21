@@ -9,7 +9,7 @@ import {
 } from '../configs/mongoPlugins';
 
 export interface IAdmin extends Document {
-	_id: Schema.Types.ObjectId;
+	_id: mongoose.Types.ObjectId;
 	role_id?: number;
 	department_id?: number;
 	name?: string;
@@ -118,7 +118,7 @@ adminSchema.plugin(globalQueryFilters);
 adminSchema.plugin(toJSON);
 adminSchema.plugin(addTimestamps);
 
-// ✅ Post-save hook (similar to Sequelize `afterCreate`)
+
 adminSchema.post('save', async function (admin: IAdmin, next) {
 	if (!admin.socket_id) {
 		admin.socket_id = `${admin.role_id}-${admin._id}-${admin.department_id}-socketId`;
@@ -161,7 +161,7 @@ adminSchema.pre('save', function (next) {
 	next();
 });
 
-// ✅ Middleware: soft delete (similar to Sequelize `beforeDestroy`)
+
 adminSchema.pre('deleteOne', { document: true, query: false }, function (next) {
 	this.set({
 		deleted_at: new Date(),

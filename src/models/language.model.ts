@@ -10,7 +10,7 @@ import {
 } from '../configs/mongoPlugins';
 
 export interface ILanguage extends Document {
-	_id: Schema.Types.ObjectId;
+	_id: mongoose.Types.ObjectId;
 	name: string;
 	slug?: string;
 	is_active: boolean;

@@ -15,7 +15,7 @@ import {
 import { ApiError } from '../utils';
 
 export interface IUser extends Document {
-	_id: Schema.Types.ObjectId;
+	_id: mongoose.Types.ObjectId;
 	user_name?: string;
 	user_type?: string;
 	email: string;

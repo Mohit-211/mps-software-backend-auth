@@ -3,7 +3,7 @@ import { otpTypes, otpTypesArr } from '../configs/constantTypes';
 import { addTimestamps, globalQueryFilters, toJSON } from '../configs/mongoPlugins';
 
 export interface IOTP extends Document {
-  _id: Schema.Types.ObjectId;
+  _id: mongoose.Types.ObjectId;
   email?: string;
   user_id?: Schema.Types.ObjectId;
   mobile?: string;

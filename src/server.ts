@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import app from './app';
-import moment from 'moment';
+import { DateTime } from 'luxon';
 import config from './configs/config';
 import logger from './configs/logger';
 import http from 'http';
@@ -21,10 +21,10 @@ if(config.essentials.sslEnabe){
 }
 
 // Get the current date and time
-const currentTime = moment();
+const currentTime = DateTime.now();
 server.listen(config.essentials.port, '0.0.0.0',() => {
   logger.info(
-    `Server is working fine 😊 & listening on PORT: ${config.essentials.port} | SSL status ${config.essentials.sslEnabe} | Default Timezone: ${process.env.TZ} | Current date and time: ${currentTime.format('YYYY-MM-DD HH:mm:ss')}`
+    `Server is working fine 😊 & listening on PORT: ${config.essentials.port} | SSL status ${config.essentials.sslEnabe} | Default Timezone: ${process.env.TZ} | Current date and time: ${currentTime.toFormat('yyyy-MM-dd HH:mm:ss')}`
   );
 });
 

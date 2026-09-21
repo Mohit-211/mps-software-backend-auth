@@ -7,7 +7,7 @@ import cron from 'node-cron';
 import NodeCache from 'node-cache';
 import path from 'path';
 import fs from 'fs';
-import moment from 'moment';
+import { DateTime } from 'luxon';
 import requestIp from 'request-ip';
 import swaggerUi from 'swagger-ui-express';
 
@@ -136,7 +136,7 @@ app.use('/api/v1', upload, handleImageCompression, routes);
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.get('/api/v1/logs', (req, res) => {
-	const currentDate = moment().format('YYYY-MM-DD');
+	const currentDate = DateTime.now().toFormat('yyyy-MM-dd');
 	const logFileName = `${currentDate}.log`;
 	const logFilePath = path.join(LOG_DIR, logFileName);
 	fs.readFile(logFilePath, 'utf8', (err, data) => {

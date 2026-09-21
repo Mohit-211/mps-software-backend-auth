@@ -8,7 +8,6 @@ import { Admin, Role } from "../../models";
 import { ApiError } from "../../utils";
 import { sendAdminCredential, sendForgotPasswordOTP } from "../common/email.service";
 import config from "../../configs/config";
-import dayjs from "dayjs";
 import { otpTypes } from "../../configs/constantTypes";
 
 

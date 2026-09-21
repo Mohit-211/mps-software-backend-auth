@@ -10,7 +10,7 @@ import {
 } from '../configs/mongoPlugins';
 
 export interface ITimezone extends Document {
-	_id: Schema.Types.ObjectId;
+	_id: mongoose.Types.ObjectId;
 	time_zone: string;
 	has_day_light_saving: boolean;
 	is_day_light_saving_active: boolean;

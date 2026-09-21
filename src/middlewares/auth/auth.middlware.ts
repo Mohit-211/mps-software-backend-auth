@@ -105,7 +105,7 @@ export const verifyAuthJWTToken = catchAsync(async (req, res, next) => {
       return responseWrapper(res, "", "User Not Found", httpStatus.NOT_FOUND);
     }
     const user = users[0];
-console.log('USER', user);
+
     req.body.user = user;
 
     req.body.tokenPayload = tokenPayload;

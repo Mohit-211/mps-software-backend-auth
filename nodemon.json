@@ -9,5 +9,5 @@
     "src/**/*"
   ],
   "ext": "ts",
-  "exec": "ts-node index.ts"
+  "exec": "ts-node --transpile-only index.ts"
 }

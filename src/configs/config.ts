@@ -20,22 +20,6 @@ const envVarsSchema = Joi.object({
 		.default(false),
 	SECRET_KEY: Joi.string().required(),
 
-	CENTRAL_MYSQL_HOST: Joi.string()
-		.required()
-		.description('Central Mysql Host'),
-	CENTRAL_MYSQL_USER: Joi.string()
-		.required()
-		.description('Central Mysql User'),
-	CENTRAL_MYSQL_PASSWORD: Joi.string()
-		.allow('')
-		.description('Central Mysql Password'),
-	CENTRAL_MYSQL_DB: Joi.string().required().description('Central Mysql DB'),
-	CENTRAL_MYSQL_PORT: Joi.number().required().description('Central Port'),
-
-	ELASTIC_IP: Joi.string(),
-	ELASTIC_PORT: Joi.number(),
-	ELASTIC_INDEX: Joi.string(),
-
 	MONGODB_URL: Joi.string().required().description('Mongo DB url'),
 	MONGODB_USER: Joi.string().required(),
 	MONGODB_PASSWORD: Joi.string().required(),
@@ -62,8 +46,20 @@ const envVarsSchema = Joi.object({
 	RAZORPAY_KEY_ID: Joi.string(),
 	RAZORPAY_KEY_SECRET: Joi.string(),
 
+	SQUARE_APPLICATION_ID: Joi.string(),
+	SQUARE_ACCESS_TOKEN: Joi.string(),
+	SQUARE_LOCATION_ID: Joi.string(),
+	SQUARE_ENV: Joi.string(),
+
 	GOOGLE_PLACE_API_KEY: Joi.string(),
 	GOOGLE_PLACE_API_URL: Joi.string(),
+
+	SERP_API_KEY: Joi.string(),
+	SERP_API_TIMEOUT: Joi.number(),
+
+	SEO_MOZ_API_USERNAME: Joi.string(),
+	SEO_MOZ_API_PASSWORD: Joi.string(),
+	SEO_MOZ_API_KEY: Joi.string(),
 
 	COMPANY_SUPPORT_EMAIL: Joi.string().required(),
 	COMPANY_NAME: Joi.string().required(),
@@ -134,22 +130,10 @@ interface Config {
 	};
 
 	databases: {
-		central: {
-			db: string;
-			port: number;
-			host: string;
-			user: string;
-			passwd?: string;
-		};
 		mongodb: {
 			url: string;
 			user: string;
 			password: string;
-		};
-		elastic: {
-			ip: string;
-			port: number;
-			index: string;
 		};
 	};
 
@@ -174,9 +158,27 @@ interface Config {
 		webhookSecretCustomerInvoicePrice?: string;
 	};
 
+	square: {
+		squareApplicationId?: string;
+		squareAccessToken?: string;
+		squareLocationId?: string;
+		squareEnv?: string;
+	};
+
 	razorpay: {
 		keyId?: string;
 		keySecret?: string;
+	};
+
+	seoMOZApis: {
+		username?: string;
+		password?: string;
+		keySecret?: string;
+	};
+
+	serpApis: {
+		keySecret?: string;
+		timeout?: number;
 	};
 
 	googleApis: {
@@ -243,22 +245,10 @@ const config: Config = {
 	},
 
 	databases: {
-		central: {
-			db: envVars.CENTRAL_MYSQL_DB,
-			port: envVars.CENTRAL_MYSQL_PORT,
-			host: envVars.CENTRAL_MYSQL_HOST,
-			user: envVars.CENTRAL_MYSQL_USER,
-			passwd: envVars.CENTRAL_MYSQL_PASSWORD,
-		},
 		mongodb: {
 			url: envVars.MONGODB_URL,
 			user: envVars.MONGODB_USER,
 			password: envVars.MONGODB_PASSWORD,
-		},
-		elastic: {
-			ip: envVars.ELASTIC_IP,
-			port: envVars.ELASTIC_PORT,
-			index: envVars.ELASTIC_INDEX,
 		},
 	},
 
@@ -284,6 +274,13 @@ const config: Config = {
 			envVars.STRIPE_WEBHOOK_SECRET_CUSTOMER_INVOICE_PRICE,
 	},
 
+	square: {
+		squareApplicationId: envVars.SQUARE_APPLICATION_ID,
+		squareAccessToken: envVars.SQUARE_ACCESS_TOKEN,
+		squareLocationId: envVars.SQUARE_LOCATION_ID,
+		squareEnv: envVars.SQUARE_ENV,
+	},
+
 	razorpay: {
 		keyId: envVars.RAZORPAY_KEY_ID,
 		keySecret: envVars.RAZORPAY_KEY_SECRET,
@@ -294,6 +291,17 @@ const config: Config = {
 			url: envVars.GOOGLE_PLACE_API_URL,
 			keySecret: envVars.GOOGLE_PLACE_API_KEY,
 		},
+	},
+
+	seoMOZApis: {
+		username: envVars.SEO_MOZ_API_USERNAME,
+		password: envVars.SEO_MOZ_API_PASSWORD,
+		keySecret: envVars.SEO_MOZ_API_KEY,
+	},
+
+	serpApis: {
+		keySecret: envVars.SERP_API_KEY,
+		timeout: envVars.SERP_API_TIMEOUT,
 	},
 
 	company: {
