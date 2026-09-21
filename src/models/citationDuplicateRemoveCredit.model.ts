@@ -2,7 +2,7 @@ import mongoose, { Document, Model, Schema } from 'mongoose';
 import { currencyTypes, currencyTypesArr } from '../configs/constantTypes';
 
 export interface ICitationDuplicateRemoveCredit extends Document {
-    _id: Schema.Types.ObjectId;
+    _id: mongoose.Types.ObjectId;
     price: number;
     currency: string;
     credit: number;

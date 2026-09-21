@@ -3,7 +3,7 @@ import { addTimestamps, globalQueryFilters, toJSON } from '../configs/mongoPlugi
 import { citationOrderStatus, citationOrderStatusArr } from '../configs/constantTypes';
 
 export interface ILocationCitation extends Document {
-    _id: Schema.Types.ObjectId;
+    _id: mongoose.Types.ObjectId;
     location_id: Schema.Types.ObjectId;
     campaign_id: Schema.Types.ObjectId;
     user_id?: Schema.Types.ObjectId;

@@ -45,7 +45,7 @@ export interface IBusinessInfo {
 }
 
 export interface ICampaign extends Document {
-    _id: Schema.Types.ObjectId;
+    _id: mongoose.Types.ObjectId;
 
     location_id?: Schema.Types.ObjectId;
     user_id?: Schema.Types.ObjectId;

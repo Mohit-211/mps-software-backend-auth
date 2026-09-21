@@ -3,7 +3,7 @@ import { addTimestamps, globalQueryFilters, toJSON } from '../configs/mongoPlugi
 import { citationModes, citationModesArr, citationOrderStatus, citationOrderStatusArr, citationStatus, citationStatusArr, citationTypes, citationTypesArr, currencyTypes, currencyTypesArr, paymentStatusTypes, paymentStatusTypesArr } from '../configs/constantTypes';
 
 export interface ICitation extends Document {
-    _id: Schema.Types.ObjectId;
+    _id: mongoose.Types.ObjectId;
     location_id?: Schema.Types.ObjectId;
     campaign_id?: Schema.Types.ObjectId;
     user_id?: Schema.Types.ObjectId;

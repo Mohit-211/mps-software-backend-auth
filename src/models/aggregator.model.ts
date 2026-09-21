@@ -2,7 +2,7 @@ import mongoose, { Document, Model, Schema } from 'mongoose';
 import { currencyTypes, currencyTypesArr } from '../configs/constantTypes';
 
 export interface IAggregator extends Document {
-    _id: Schema.Types.ObjectId;
+    _id: mongoose.Types.ObjectId;
     name: string;
     price: number;
     currency: string;

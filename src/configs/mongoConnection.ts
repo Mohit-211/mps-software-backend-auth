@@ -32,9 +32,8 @@ mongoose.connection.once('open', async () => {
   try {
     logger.info('✅ Mongoose connection opened successfully.');
 
-    agenda = new Agenda({
-      mongo: mongoose.connection.db,
-      collection: 'agendaJobs',
+        agenda = new Agenda({
+      mongo: mongoose.connection.db as any,
     });
 
     agenda.on('ready', async () => {

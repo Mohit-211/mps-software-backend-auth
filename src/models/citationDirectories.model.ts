@@ -6,7 +6,7 @@ import {
 } from '../configs/mongoPlugins';
 
 export interface ICitationDirectory extends Document {
-	_id: Schema.Types.ObjectId;
+	_id: mongoose.Types.ObjectId;
 	name: string;
 	url: string;
 	domain: string;
