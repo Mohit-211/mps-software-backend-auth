@@ -158,3 +158,25 @@ export const getAllPaymentHistory = catchAsync(
 	},
 );
 
+
+export const sendSubscriptionWelcomeMailController = catchAsync(
+  async (req, res) => {
+    const body = pick(req.body, [
+      'email',
+      'name',
+    ]);
+
+    await subscriptionService.sendSubscriptionWelcomeMailService(
+      body.email,
+      body.name,
+    );
+
+    return responseWrapper(
+      res,
+      null,
+      'Subscription welcome email sent successfully.',
+      httpStatus.OK,
+    );
+  },
+);
+

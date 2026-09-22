@@ -102,32 +102,38 @@ export const sendAdminCredential = async (to: string, password: string, role: st
 
 export const sendSubscriptionWelcomeMail = async (
   to: string,
-  name: string,
+  name?: string,
 ): Promise<void> => {
   try {
+    const customerName = name?.trim() || 'Anshita Testing';
+
     const subject = `Welcome to MyPageSEO 🚀`;
     const adminEmail = 'mohit@mypageseo.com';
 
-    const text = `Hi ${name},
-Welcome to Mypageseo! 🎉
-Thank you for choosing Mypageseo to help grow your business and improve your visibility on Google.
+    const text = `Hi ${customerName},
+Welcome to MyPageSeo! 🎉
+Thank you for choosing MyPageSeo to help grow your business and improve your visibility on Google.
 We have successfully received your payment, and your onboarding is now underway. Our team will review your details and reach out to you shortly to get everything started.
 During the onboarding process, we will understand your business, target locations, services, and goals so we can build the right local SEO strategy for you.
+
 What happens next?
 • Our team will contact you shortly
 • We will collect the information needed to get started
 • We will set up and optimize your local SEO campaign
 • You will receive regular updates and reports on your progress
+
 If you have any questions in the meantime, simply reply to this email and our team will be happy to help.
-Once again, welcome to Mypageseo. We are excited to work with you and help your business get found by more local customers.
+
+Once again, welcome to MyPageSeo. We are excited to work with you and help your business get found by more local customers.
+
 Best regards,
 Team MyPageSEO`;
 
-    const html = subscriptionWelcomeEmailFormat(name);
+    const html = subscriptionWelcomeEmailFormat(customerName);
 
     const message: EmailOptions = {
       from: `${config.email.from}`,
-      to: `${to}`,
+      to,
       subject,
       text,
       html,
@@ -147,7 +153,7 @@ Team MyPageSEO`;
     ]);
   } catch (error: any) {
     throw new ApiError(
-      error.statusCode ? error.statusCode : httpStatus.INTERNAL_SERVER_ERROR,
+      error.statusCode || httpStatus.INTERNAL_SERVER_ERROR,
       error.message,
     );
   }

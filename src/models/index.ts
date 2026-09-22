@@ -53,3 +53,8 @@ export * from "./paymentCreditPlans.model";
 
 // admin
 export * from "./admin.model";
+
+// blogs
+export * from "./blog.model";
+export * from "./blogCategory.model";
+export * from "./blogCategoryMapping.model";

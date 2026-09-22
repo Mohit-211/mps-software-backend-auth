@@ -6,7 +6,7 @@ const onboardingWelcomeEmailFormat = (name: string) => {
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <title>Welcome to Mypageseo</title>
+        <title>Welcome to MyPageSeo</title>
         <style media="all" type="text/css">
           @media all {
             .btn-primary table td:hover {
@@ -243,7 +243,7 @@ const onboardingWelcomeEmailFormat = (name: string) => {
                           margin-bottom: 16px;
                         "
                       >
-                        Welcome to Mypageseo! 🎉
+                        Welcome to MyPageSeo! 🎉
                       </p>
                       <p
                         style="
@@ -254,7 +254,7 @@ const onboardingWelcomeEmailFormat = (name: string) => {
                           margin-bottom: 16px;
                         "
                       >
-                        Thank you for choosing Mypageseo to help grow your business and improve your visibility on Google.
+                        Thank you for choosing MyPageSeo to help grow your business and improve your visibility on Google.
                       </p>
                       <p
                         style="
@@ -386,7 +386,7 @@ const onboardingWelcomeEmailFormat = (name: string) => {
                           margin-bottom: 16px;
                         "
                       >
-                        Once again, welcome to Mypageseo. We are excited to work with you and help your business get found by more local customers.
+                        Once again, welcome to MyPageSeo. We are excited to work with you and help your business get found by more local customers.
                       </p>
                       <p
                         style="
@@ -399,7 +399,7 @@ const onboardingWelcomeEmailFormat = (name: string) => {
                       >
                         Best regards,
                         <br />
-                        Team Mypageseo
+                        Team MyPageSeo
                       </p>
                     </td>
                   </tr>

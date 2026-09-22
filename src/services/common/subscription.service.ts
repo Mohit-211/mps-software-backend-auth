@@ -23,6 +23,7 @@ import {
 	handleSubscriptionSuspended,
 	handleSubscriptionUpdated,
 } from './paypal.service';
+import { sendSubscriptionWelcomeMail } from './email.service';
 
 export const createPlan = async (body: any) => {
 	try {
@@ -1419,4 +1420,14 @@ export const getAllPaymentHistory = async (query: any) => {
 			error.message,
 		);
 	}
+};
+
+export const sendSubscriptionWelcomeMailService = async (
+	email: string,
+	name?: string,
+) => {
+	return await sendSubscriptionWelcomeMail(
+		email,
+		name,
+	);
 };

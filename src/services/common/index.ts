@@ -20,6 +20,8 @@ import * as localMapRankingService from './localMapRankingReport.service';
 import * as gbpPSService from './gbpPostSchedular.service';
 import * as citationService from './citation.service';
 import * as paymentService from './payment.service';
+import * as blogCategoryService from './blogCategory.service';
+import * as blogService from './blog.service';
 
 export {
     countryService,
@@ -43,4 +45,6 @@ export {
     gbpPSService,
     citationService,
     paymentService,
+    blogCategoryService,
+    blogService
 };

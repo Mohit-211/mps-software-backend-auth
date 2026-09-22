@@ -19,6 +19,9 @@ import localMapRankingRoute from './localMapRankingReport.route';
 import gbpPSRoute from './gbpPostSchedular.route';
 import citationRoute from './citation.route';
 import paymentRoute from './payment.route';
+import blogRoute from './blog.routes';
+import blogCategoryRoutes from './blogCategory.routes';
+
 
 
 const commonRoutes = [
@@ -101,6 +104,14 @@ const commonRoutes = [
 	{
 		path: '/payments',
 		route: paymentRoute,
+	},
+	{
+		path: '/blog',
+		route: blogRoute,
+	},
+	{
+		path: '/blog-category',
+		route: blogCategoryRoutes,
 	},
 ];
 

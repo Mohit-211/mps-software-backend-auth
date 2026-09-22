@@ -19,6 +19,8 @@ import * as localMapRankingController from './localMapRankingReport.controller';
 import * as gbpPSController from './gbpPostSchedular.controller';
 import * as citationController from './citation.controller';
 import * as paymentController from './payment.controller';
+import * as blogController from './blog.controller';
+import * as blogCategoryController from './blogCategory.controller';
 
 export {
 	systemController,
@@ -41,4 +43,7 @@ export {
 	gbpPSController,
 	citationController,
 	paymentController,
+	blogController,
+	blogCategoryController
+
 };

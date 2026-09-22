@@ -24,6 +24,11 @@ router.get('/coupons', subscriptionController.getAllCoupons);
 
 router.get('/payments/all', subscriptionController.getAllPaymentHistory);
 
+router.post(
+	'/send-subscription-welcome-mail',
+	subscriptionController.sendSubscriptionWelcomeMailController,
+);
+
 
 
 export default router;

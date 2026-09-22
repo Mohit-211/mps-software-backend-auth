@@ -15,7 +15,13 @@
     "mongo-migrate": "cross-env NODE_ENV=development ts-node --transpile-only ./src/configs/mongoMigrate.ts",
     "seed-country-city-state": "cross-env NODE_ENV=development ts-node ./src/configs/fetchCountryStateCityDataFromRemoteApi.ts"
   },
-  "keywords": ["Node", "Typescript", "MongoDb", "Boilerplate", "Setup"],
+  "keywords": [
+    "Node",
+    "Typescript",
+    "MongoDb",
+    "Boilerplate",
+    "Setup"
+  ],
   "author": "mypageseo",
   "license": "ISC",
   "dependencies": {
